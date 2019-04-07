@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+  <div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="login-container">
+        <div class="form-group">
+          <input type="text" formControlName='username' class="form-control" placeholder="Username" autofocus>        
+          <span *ngIf="!form.get('username').valid && form.get('username').touched" class="error">
+              <i class="fa fa-info-circle"></i>
+              Please enter username</span>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" formControlName='password' placeholder="Password" autofocus>
+          <span *ngIf="!form.get('password').valid && form.get('password').touched" class="error">
+              <i class="fa fa-info-circle"></i> Please enter password</span>
+        </div>
+        <div class="form-group">      
+          <button type="submit" [disabled]="form.invalid" [ngClass]="{'disabled': form.invalid}" class="btn btn-primary btn-block">Submit</button>
+        </div>      
+      </div>
+    </div>
+  </div>
+</form>

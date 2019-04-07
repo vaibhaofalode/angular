@@ -1,4 +1,21 @@
-<h1>
-  homepage works!
-</h1>
-<button class="btn btn-primary">Okay</button>
+<div class="container">
+  <h1> Users List</h1>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fullname</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+          <td>{{user.id}}</td>
+          <td>{{user.first_name}} {{user.last_name}}</td>
+          <td>
+            <a class="btn btn-primary btn-xs" routerLink="/users/{{user.id}}">Details</a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

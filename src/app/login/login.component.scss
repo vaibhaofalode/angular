@@ -1,0 +1,19 @@
+.login-container {
+  margin-top: 20%;
+  border-radius: 6px;
+  background-color: #2A438F;
+  min-height: 200px;
+  text-align: center;
+  padding: 20px;
+  .form-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .btn, input {
+      border-radius: 0;
+      border-color: #ffffff;
+    }
+  }
+  input {
+    width: 100%;
+  }
+}

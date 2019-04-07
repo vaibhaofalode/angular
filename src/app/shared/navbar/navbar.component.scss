@@ -1,0 +1,12 @@
+@import '../../../styles.scss';
+.navbar {
+  background-color: $backgroundColor;
+  a {
+    color: $textColor !important;
+    &:hover {
+      color: $backgroundColor !important;
+      background-color: $textColor !important;
+      border: 0;
+    }
+  }
+}

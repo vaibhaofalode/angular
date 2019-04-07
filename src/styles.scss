@@ -1,2 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+$backgroundColor: #2A438F;
+$textColor: #ffffff;
+
+.no-border-radius {
+  border-radius: 0;
+}
+.btn {
+  border-radius: 0;
+}
+.btn-primary {
+  background-color: $backgroundColor;
+  &:hover{
+    background-color: $textColor;
+    color: $backgroundColor;
+  }
+}
+.panel, .panel-heading {
+  border-radius: 0;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  position: relative;
+  float: left;
+  text-align: left;
+  padding: 7px;
+  width: 100%;
+  background-color: #ef7b77;
+  color: white;
+  margin: 10px 0 8px 0;
+  &::before {
+    position: absolute;
+    top: -6px;
+    left: 7px;
+    content: " ";
+    width: 14px;
+    height: 7px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ef7b77;
+  }
+}
