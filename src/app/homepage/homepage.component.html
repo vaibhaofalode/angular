@@ -1,20 +1,26 @@
 <div class="container">
-  <h1> Users List</h1>
+  <h1> Movies</h1>
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Fullname</th>
+        <th>Poster</th>
+        <th>Title</th>
         <th>Details</th>
+        <th>Release Date</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-          <td>{{user.id}}</td>
-          <td>{{user.first_name}} {{user.last_name}}</td>
-          <td>
-            <a class="btn btn-primary btn-xs" routerLink="/users/{{user.id}}">Details</a>
-          </td>
+      <tr *ngFor="let movie of movies">
+          <td>{{movie.id}}</td>
+          <td><img class="img-responsive" src="{{'https://image.tmdb.org/t/p/w500' + movie.poster_path }}"/></td>
+          <td>{{movie.title}}</td>
+          <td>{{movie.overview}}</td>
+          <td>{{movie.release_date}}</td>
+
+          <!-- <td> -->
+            <!-- <a class="btn btn-primary btn-xs" routerLink="/users/{{user.id}}">Details</a> -->
+          <!-- </td> -->
       </tr>
     </tbody>
   </table>
