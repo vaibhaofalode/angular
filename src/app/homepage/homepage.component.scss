@@ -4,4 +4,15 @@
     background-color: yellow;
     opacity: 0.4;
   }
-}         
+}
+.container {
+  .row {
+    .movie-card {
+      margin: 15px 0;
+      &:hover {
+        cursor: pointer;
+        box-shadow: 10px 10px 8px #888888;
+      }
+    }
+  }
+}
