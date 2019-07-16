@@ -1,0 +1,13 @@
+<div class="row">
+  <h1 class="movie-title">{{movieDetails?.original_title}}</h1>
+  <div class="col-sm-3 movie-image-container">
+    <img *ngIf="movieDetails?.poster_path" class="movie-image thumbnail img-responsive"
+      src="{{'https://image.tmdb.org/t/p/w500' + movieDetails?.poster_path }}" />
+  </div>
+  <div class="col-sm-8 movie-details-container">
+    <label class="detail">Movie Title: </label> {{movieDetails?.original_title}} <br>
+    <label class="detail">Release Date: </label> {{movieDetails?.release_date}} <br>
+    <label class="detail">Vote Count: </label> {{movieDetails?.vote_count}} <i style="color: red;" class="fa fa-heart"></i> <br>
+    <label>Overview:</label>{{movieDetails?.overview}}
+  </div>
+</div>

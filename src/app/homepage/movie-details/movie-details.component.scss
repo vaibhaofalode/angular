@@ -1,0 +1,23 @@
+.row {
+  .movie-title {
+    text-align: center;
+    background-color: white;
+    font-variant: small-caps;
+    font-weight: bold;
+    margin: 15px 0;
+  }
+  .movie-image-container {
+    margin: 0 20px;
+    .movie-image {
+      height: 70vh;
+    }
+  }
+  .movie-details-container {
+    float: left;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    color: darkslategray;
+    font-size: 17px;
+  }
+}

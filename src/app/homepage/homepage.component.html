@@ -1,13 +1,15 @@
 <div class="container">
-  <h1> Movies</h1>
+  <h1>Upcoming Movies</h1>
   <div class="row">
     <div *ngFor="let movie of movies; let i = index">
-      <div class="movie-card col-sm-3 ">
-        <label style="white-space: nowrap; overflow: hidden;">{{movie.title}}</label>
-        <div>
-          <img class="thumbnail img-responsive" src="{{'https://image.tmdb.org/t/p/w500' + movie.poster_path }}" />
+      <a class="movie-card-anchor" routerLink="/movie/{{movie.id}}">
+        <div class="movie-card col-sm-3 ">
+          <label style="white-space: nowrap; overflow: hidden;">{{movie.title}}</label>
+          <div>
+            <img class="thumbnail img-responsive" src="{{'https://image.tmdb.org/t/p/w500' + movie.poster_path }}" />
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

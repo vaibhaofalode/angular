@@ -12,6 +12,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { MovieDetailsComponent } from './homepage/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     IndexComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { LoginComponent } from './login/login.component';
         component: IndexComponent
       },
       {
-        path: 'users',
+        path: 'movies',
         component: HomepageComponent
      },
      {
@@ -51,6 +53,10 @@ import { LoginComponent } from './login/login.component';
       path: 'users/:userId',
       component: UserDetailsComponent
      },
+     {
+      path: 'movie/:movieId',
+      component: MovieDetailsComponent
+     }
    ])
   ],
   providers: [],

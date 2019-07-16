@@ -7,6 +7,9 @@
 }
 .container {
   .row {
+    .movie-card-anchor {
+      text-decoration: none;
+    }
     .movie-card {
       margin: 15px 0;
       &:hover {

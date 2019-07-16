@@ -1,12 +1,18 @@
-<nav class="navbar navbar-inverse no-border-radius">
+<nav class="navbar navbar-inverse custom-navbar no-border-radius">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/">Homepage</a>
+      <a class="navbar-brand" routerLink="/"><img height="60px" src="../../../assets/logo.png"></a>
     </div>
     <ul class="nav navbar-nav">
-      <!-- <li class="active"><a href="#">Home</a></li> -->
-      <li><a routerLink="/users">Users</a></li>
-      <li><a routerLink="/">Page 2</a></li>
+      <li><a routerLink="/movies">Movies</a></li>
+      <li>
+        <div class="search-bar-outer-container">
+          <div class="search-bar-container">
+            <input [(ngModel)]="searchText" type="text" (keyup.enter)="searchMovie()" placeholder="Search Movies Here" autofocus class="search-input form-control">
+            <button class="search-bar-button" (click)="searchMovie()"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a routerLink='/users/register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
