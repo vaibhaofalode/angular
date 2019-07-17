@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from '../services/api.service';
+import { SearchMovieService } from '../services/search-movie.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-homepage',
@@ -11,50 +13,54 @@ import { ApiService } from '../services/api.service';
 export class HomepageComponent implements OnInit {
   users: any;
   movies: any;
+  isFound: any;
+  searchedText: any = '';
 
-
-  constructor(private httpClient: HttpClient, private spinner: NgxSpinnerService, private apiService: ApiService) {
-    this.getUsers();
+  constructor(private httpClient: HttpClient, private searchMovieService: SearchMovieService, private spinner: NgxSpinnerService, private searchedMovieService: SearchMovieService, private apiService: ApiService) {
+    this.spinner.show();
     this.getUpcomingMovies();
+  }
+
+  ngOnInit() {
+    this.searchedMovieService.$isMovieSearched.subscribe((searchText) => {
+      if (searchText.trim()) {
+        this.searchedText = searchText;
+        console.log('DATA TO BE SEARCHED',this.searchedText);
+        this.apiService.searchMovie(searchText).subscribe(
+          res => this.searchTextSuccess(res),
+          error => this.searchTextErrors(error)
+        )
+      } else {
+        this.searchedText = searchText;
+        this.getUpcomingMovies();
+      }
+    });
+  }
+
+  searchTextSuccess(data) {
+    if (data && data.results) {
+      this.movies = data.results;
+    }
+  }
+
+  searchTextErrors(error) {
+    console.log(error);
   }
 
   getUpcomingMovies() {
     this.apiService.getUpcomingMovies().subscribe(
       res => this.getUpcomingMoviesSuccess(res),
-      error =>  this.getUpcomingMoviesErrors(error)
+      error => this.getUpcomingMoviesErrors(error)
     )
   }
 
   getUpcomingMoviesSuccess(data) {
-    if(data && data.results) {
+    if (data && data.results)
       this.movies = data.results;
-    }
-    console.log(this.movies);
+    this.spinner.hide();
   }
 
   getUpcomingMoviesErrors(error) {
-    console.log(error);
-  }
-  getUsers() {
-    this.spinner.show();
-    this.apiService.getAllUsers().subscribe(
-      res => this.getAllUsersSuccess(res),
-      error =>  this.getAllUsersErrors(error)
-    );
-  }
-  getAllUsersSuccess(data) {
-    if(data && data.data) {
-      this.users = data.data;
-    }
     this.spinner.hide();
   }
-
-  getAllUsersErrors(error) {
-    console.log(error);
-    this.spinner.hide();
-  }
-
-  ngOnInit() {
-  }
-
 }

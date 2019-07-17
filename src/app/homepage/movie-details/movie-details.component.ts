@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-movie-details',
@@ -11,7 +12,8 @@ import { ApiService } from 'src/app/services/api.service';
 export class MovieDetailsComponent implements OnInit {
   movieId: any;
   movieDetails: any;
-  constructor(private routes: ActivatedRoute, private httpClient: HttpClient, private apiService: ApiService) {
+  constructor(private routes: ActivatedRoute, private httpClient: HttpClient, private spinner: NgxSpinnerService, private apiService: ApiService) {
+    this.spinner.show();
     this.movieId = this.routes.snapshot.params['movieId'];
     console.log(this.movieId);
     this.getMovieDetailsFromService(this.movieId)
@@ -26,10 +28,11 @@ export class MovieDetailsComponent implements OnInit {
     if(data) {
       this.movieDetails = data;
     }
-    console.log(data);
+    this.spinner.hide();    
   }
   getMovieDetailsErrors(error) {
     console.log(error);
+    this.spinner.hide();
   }
   ngOnInit() {
   }

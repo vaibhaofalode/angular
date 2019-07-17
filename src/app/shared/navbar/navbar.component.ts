@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-
+import { SearchMovieService } from 'src/app/services/search-movie.service';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { debounceTime } from "rxjs/operators";
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,26 +11,15 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class NavbarComponent implements OnInit {
   searchText: any = '';
-  
-  constructor(private apiService: ApiService) {
+
+  constructor(private apiService: ApiService, private spinner: NgxSpinnerService, private router: Router, private searchMovieService: SearchMovieService) {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   searchMovie() {
-    this.searchText = this.searchText.trim();
-    this.apiService.searchMovie(this.searchText).subscribe(
-      res => this.searchTextSuccess(res),
-      error =>  this.searchTextErrors(error)
-    )
-  }
-
-  searchTextSuccess(data) {
-    console.log(data);
-  }
-
-  searchTextErrors(error) {
-    console.log(error);
+    this.router.navigate(['/movies']);
+    this.searchMovieService.movieSearched(this.searchText);
   }
 }

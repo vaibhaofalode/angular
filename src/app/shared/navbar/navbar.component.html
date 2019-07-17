@@ -8,7 +8,7 @@
       <li>
         <div class="search-bar-outer-container">
           <div class="search-bar-container">
-            <input [(ngModel)]="searchText" type="text" (keyup.enter)="searchMovie()" placeholder="Search Movies Here" autofocus class="search-input form-control">
+            <input [(ngModel)]="searchText" type="text" (keyup)="searchMovie()" placeholder="Search Movies Here" autofocus class="search-input form-control">
             <button class="search-bar-button" (click)="searchMovie()"><i class="fa fa-search"></i></button>
           </div>
         </div>

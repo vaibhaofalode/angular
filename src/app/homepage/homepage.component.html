@@ -1,15 +1,18 @@
 <div class="container">
-  <h1>Upcoming Movies</h1>
-  <div class="row">
+  <h1>Movies</h1>
+  <div *ngIf="movies" class="row">
     <div *ngFor="let movie of movies; let i = index">
       <a class="movie-card-anchor" routerLink="/movie/{{movie.id}}">
-        <div class="movie-card col-sm-3 ">
+        <div class="movie-card col-sm-2">
           <label style="white-space: nowrap; overflow: hidden;">{{movie.title}}</label>
-          <div>
+          <div *ngIf="movie.poster_path">
             <img class="thumbnail img-responsive" src="{{'https://image.tmdb.org/t/p/w500' + movie.poster_path }}" />
           </div>
         </div>
       </a>
     </div>
   </div>
+</div>
+<div *ngIf="searchedText && !movies.length">
+  <h4 class="center">No Results Found</h4>
 </div>
