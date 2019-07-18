@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { ApiService } from '../services/api.service';
-import { SearchMovieService } from '../services/search-movie.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {ApiService} from '../services/api.service';
+import {SearchMovieService} from '../services/search-movie.service';
 
 @Component({
   selector: 'app-homepage',
@@ -16,7 +15,11 @@ export class HomepageComponent implements OnInit {
   isFound: any;
   searchedText: any = '';
 
-  constructor(private httpClient: HttpClient, private searchMovieService: SearchMovieService, private spinner: NgxSpinnerService, private searchedMovieService: SearchMovieService, private apiService: ApiService) {
+  constructor(private httpClient: HttpClient,
+              private searchMovieService: SearchMovieService,
+              private spinner: NgxSpinnerService,
+              private searchedMovieService: SearchMovieService,
+              private apiService: ApiService) {
     this.spinner.show();
     this.getUpcomingMovies();
   }
@@ -25,11 +28,10 @@ export class HomepageComponent implements OnInit {
     this.searchedMovieService.$isMovieSearched.subscribe((searchText) => {
       if (searchText.trim()) {
         this.searchedText = searchText;
-        console.log('DATA TO BE SEARCHED',this.searchedText);
         this.apiService.searchMovie(searchText).subscribe(
           res => this.searchTextSuccess(res),
           error => this.searchTextErrors(error)
-        )
+        );
       } else {
         this.searchedText = searchText;
         this.getUpcomingMovies();
@@ -40,6 +42,7 @@ export class HomepageComponent implements OnInit {
   searchTextSuccess(data) {
     if (data && data.results) {
       this.movies = data.results;
+      this.searchMovieService.movieSearchedDone();
     }
   }
 
@@ -51,12 +54,14 @@ export class HomepageComponent implements OnInit {
     this.apiService.getUpcomingMovies().subscribe(
       res => this.getUpcomingMoviesSuccess(res),
       error => this.getUpcomingMoviesErrors(error)
-    )
+    );
   }
 
   getUpcomingMoviesSuccess(data) {
-    if (data && data.results)
+    if (data && data.results) {
       this.movies = data.results;
+    }
+    this.searchMovieService.movieSearchedDone();
     this.spinner.hide();
   }
 

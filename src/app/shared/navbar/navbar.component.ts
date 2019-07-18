@@ -11,14 +11,19 @@ import { debounceTime } from "rxjs/operators";
 })
 export class NavbarComponent implements OnInit {
   searchText: any = '';
-
-  constructor(private apiService: ApiService, private spinner: NgxSpinnerService, private router: Router, private searchMovieService: SearchMovieService) {
+  isSearching: boolean = false;
+  constructor(private apiService: ApiService, private searchedMovieService: SearchMovieService, private spinner: NgxSpinnerService, private router: Router, private searchMovieService: SearchMovieService) {
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.searchedMovieService.$isSearchingMovie.subscribe((value) => {
+      this.isSearching = value;
+    })
+  }
 
   searchMovie() {
+    this.isSearching = true;
     this.router.navigate(['/movies']);
     this.searchMovieService.movieSearched(this.searchText);
   }

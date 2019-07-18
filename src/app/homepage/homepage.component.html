@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container home-top-margin">
   <h1>Movies</h1>
   <div *ngIf="movies" class="row">
     <div *ngFor="let movie of movies; let i = index">
@@ -6,7 +6,7 @@
         <div class="movie-card col-sm-2">
           <label style="white-space: nowrap; overflow: hidden;">{{movie.title}}</label>
           <div *ngIf="movie.poster_path">
-            <img class="thumbnail img-responsive" src="{{'https://image.tmdb.org/t/p/w500' + movie.poster_path }}" />
+            <img class="thumbnail img-responsive" src="{{'https://image.tmdb.org/t/p/w500' + movie.poster_path }}"/>
           </div>
         </div>
       </a>

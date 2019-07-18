@@ -1,47 +1,40 @@
 @import '../../../styles.scss';
+
 .custom-navbar {
-  min-height: 90px;
   margin-bottom: 0;
 }
+
 .navbar {
   background-color: $backgroundColor;
-  .navbar-brand {
-    min-height: 90px;
-    text-align: center;
-    &:hover {
-      border-radius: 15px;
-      font-weight: bold;
-      font-size: 23px;
-      box-shadow: 10px 10px 8px;
-    }
-  }
-  .navbar-nav {
-    a {
-      min-height: 90px;
-      padding-top: 30px;
-      font-variant: small-caps;
-      font-size: 20px;
-      &:hover {
-        font-weight: bold;
-        font-size: 23px;
-        border-radius: 15px;
-        box-shadow: 10px 10px 8px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
 
-      }
-    }
+  .navbar-brand {
+    text-align: center;
+  }
+
+  li {
+    margin: 0 5px;
+  }
+
+  .navbar-nav {
+
     .search-bar-outer-container {
-      padding-top: 30px;
-      min-height: 90px;
+      padding-top: 10px;
+
       .search-bar-container {
         float: left;
         border-radius: 30px;
         font-size: 20px;
+
         .search-input {
           float: left;
           width: 600px;
           border-radius: 0px;
           border: 0;
         }
+
         .search-bar-button {
           float: left;
           width: auto;
@@ -50,11 +43,26 @@
           background-color: #fff;
           border: 0;
         }
+
+        .search-spinner {
+          float: left;
+          width: auto;
+          border-radius: 0px;
+          height: 34px;
+          background-color: #fff;
+          border: 0;
+
+          .spinner-icon {
+            margin-top: 6px;
+          }
+        }
       }
     }
   }
+
   a {
     color: $textColor !important;
+
     &:hover {
       color: $backgroundColor !important;
       background-color: $textColor !important;
