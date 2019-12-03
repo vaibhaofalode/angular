@@ -1,0 +1,26 @@
+<nav class="navbar navbar-inverse custom-navbar no-border-radius">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/"><img height="20px" src="../../../assets/logo.png"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a routerLink="/movies">Movies</a></li>
+      <li>
+        <div class="search-bar-outer-container">
+          <div class="search-bar-container">
+            <input [(ngModel)]="searchText" type="text" (keyup)="searchMovie()" placeholder="Search Movies Here"
+                   autofocus class="search-input form-control">
+            <div *ngIf="isSearching" class="search-spinner">
+              <i style="float: left; background-color: #fff; color:black;"
+                 class="fa fa-spinner fa-spin spinner-icon"></i></div>
+            <button class="search-bar-button" (click)="searchMovie()"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a routerLink='/users/register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a routerLink='/users/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>

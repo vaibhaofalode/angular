@@ -1,0 +1,15 @@
+<div class="container">
+  <h1> User Details </h1>
+  <br><br>
+  <div class="col-sm-6 col-sm-offset-3" *ngIf="user">
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{user.first_name + ' ' + user.last_name }}</div>
+      <div class="panel-content">
+        <img src={{user?.avatar}}>
+        {{user.id}}
+        {{user.first_name}}
+        {{user.last_name}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.home-top-margin {
+  padding-top: 50px;
+}
+.user-card {
+  text-decoration: none;
+
+  .panel-content:hover {
+    background-color: yellow;
+    opacity: 0.4;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.container {
+  .row {
+    .movie-card-anchor {
+      text-decoration: none;
+    }
+
+    .movie-card {
+      margin: 15px 0;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 10px 10px 8px #888888;
+      }
+    }
+  }
+}
