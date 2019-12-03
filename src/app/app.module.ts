@@ -35,7 +35,7 @@ import { MovieDetailsComponent } from './homepage/movie-details/movie-details.co
     RouterModule.forRoot([
       {
         path: '',
-        component: IndexComponent
+        component: HomepageComponent
       },
       {
         path: 'movies',
